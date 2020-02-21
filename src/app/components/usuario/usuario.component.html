@@ -1,0 +1,86 @@
+<div class="container mt-5">
+    <h2>TABLA SIN FILTRADO</h2>
+    <hr>
+    <table class="table table-striped border">
+        <thead>
+            <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Country</th>
+                <th scope="col">Position</th>
+                <th scope="col">Email</th>
+                <th scope="col">Phone Number</th>
+                <th scope="col">IDK</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let user of filteredUsers">
+                <th> {{user.name}} </th>
+                <td>{{user.Country}}</td>
+                <td>{{user.position}}</td>
+                <td>{{user.email}}</td>
+                <td>{{user.phoneNumber}}</td>
+                <td>
+                    <button class="btn btn-block btn-outline-info mr-3 float-left">Details</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <!-- Button trigger modal -->
+    <button type="button" class="btn btn-primary mr-2" data-toggle="modal" data-target="#exampleModalScrollable">
+        Filter
+      </button>
+    <button (click)="limpiar()" type="button" class="btn btn-success ">
+        Clean filters
+    </button>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModalScrollable" tabindex="-1" role="dialog" aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalScrollableTitle">Filter</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+                </div>
+                <div class="modal-body">
+                    <!-- START FORM-->
+                    <form #formulario="ngForm" (ngSubmit)="filtrar(formulario)">
+                        <div class="row">
+                            <div class="col">
+                                <label for="position">Position</label>
+                                <select id="position" class="form-control" name="position" ngModel>
+                                  <option selected value="FrontEnd">FrontEnd Developer</option>
+                                  <option value="BackEnd">BackEnd Developer</option>
+                                  <option value="FullStack">FullStack Developer</option>
+                                </select>
+                            </div>
+                            <div class="col">
+                                <label for="country">Country</label>
+                                <select id="country" class="form-control" name="country" ngModel>
+                                  <option selected value="COL">COLOMBIA - COL</option>
+                                  <option value="CR">COSTA RICA - CR</option>
+                                </select>
+                            </div>
+                            <div class="col">
+                                <label for="yearsexperience">Experience</label>
+                                <select id="yearsexperience" class="form-control" name="experience" ngModel>
+                                  <option selected value="3">1 - 3 years</option>
+                                  <option value="5">3 - 5 years</option>
+                                  <option value="10">5 - 10 years</option>
+                                </select>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary"> Filter </button>
+                        </div>
+                    </form>
+                    <!--END FORM-->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

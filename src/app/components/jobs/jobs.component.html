@@ -1,0 +1,34 @@
+<div class="row mt-2">
+    <div class="col">
+        <button (click)="atras()" class="btn btn-outline-primary float-left">Atras</button>
+    </div>
+    <div class="col">
+        <button (click)="siguiente()" class="btn btn-outline-secondary float-right">Siguiente</button>
+    </div>
+</div>
+
+<cdk-virtual-scroll-viewport itemSize="30" class="list-container mt-1">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Codigo</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *cdkVirtualFor="let carro of carros; let i = index; let c = count;">
+                <th scope="row">{{i+1}} / {{c}}</th>
+                <td>{{carro.nome | uppercase}}</td>
+                <td>{{carro.codigo}}</td>
+                <td>
+                    <button (click)="verCarro(carro.codigo)" class="btn btn-outline-dark btn-block">Ver
+                        especificaciones</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</cdk-virtual-scroll-viewport>
+<button (click)="final()" class="btn btn-outline-secondary mt-2 btn-block">Ir al final</button>
+<div class="row">
+</div>

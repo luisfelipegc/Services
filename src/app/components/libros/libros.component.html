@@ -1,0 +1,20 @@
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Edition count</th>
+            <th scope="col">Link</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let book of books; let i = index;">
+            <th scope="row">{{i+1}}</th>
+            <td>{{book.name}}</td>
+            <td>{{book.edition_count}}</td>
+            <td>
+                <button class="btn btn-dark btn-block">Watch book</button>
+            </td>
+        </tr>
+    </tbody>
+</table>
