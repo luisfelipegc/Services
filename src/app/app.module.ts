@@ -16,7 +16,22 @@ import { JobsComponent } from './components/jobs/jobs.component';
 import { CarroComponent } from './components/carro/carro.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { UsuarioComponent } from './components/usuario/usuario.component';
-import { FormsModule } from '@angular/forms'
+import { FormsModule } from '@angular/forms';
+import { SmarttableComponent } from './components/smarttable/smarttable.component';
+
+// Smart Tables
+import { Ng2SmartTableModule } from 'ng2-smart-table';
+import { OlimpicsComponent } from './components/olimpics/olimpics.component';
+
+// Angular Material
+import {MatTableModule} from '@angular/material/table';
+import { MatIconModule } from '@angular/material/icon';
+import {MatPaginatorModule} from '@angular/material/paginator';
+import {MatSortModule} from '@angular/material/sort';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material';
+
+
 
 @NgModule({
   declarations: [
@@ -26,6 +41,8 @@ import { FormsModule } from '@angular/forms'
     JobsComponent,
     CarroComponent,
     UsuarioComponent,
+    SmarttableComponent,
+    OlimpicsComponent,
   ],
   imports: [
     BrowserModule,
@@ -33,7 +50,14 @@ import { FormsModule } from '@angular/forms'
     HttpClientModule,
     BrowserAnimationsModule,
     ScrollingModule,
-    FormsModule
+    FormsModule,
+    Ng2SmartTableModule,
+    MatTableModule,
+    MatIconModule,
+    MatPaginatorModule,
+    MatSortModule,
+    MatFormFieldModule,
+    MatInputModule
   ],
   providers: [
     ServicioService

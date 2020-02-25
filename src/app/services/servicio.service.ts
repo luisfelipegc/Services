@@ -13,6 +13,10 @@ export class ServicioService {
     return this.http.get('http://openlibrary.org/people/george08/lists.json');
   }
 
+  getOlimpics() {
+    return this.http.get('https://raw.githubusercontent.com/ag-grid/ag-grid-docs/master/src/olympicWinnersSmall.json');
+  }
+
   getCars() {
     return this.http.get('https://parallelum.com.br/fipe/api/v1/carros/marcas');
   }

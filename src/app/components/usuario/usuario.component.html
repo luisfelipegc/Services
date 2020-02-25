@@ -1,6 +1,20 @@
 <div class="container mt-5">
-    <h2>TABLA SIN FILTRADO</h2>
+
+    <form #nombre="ngForm" (ngSubmit)="filtrarNombre(nombre)">
+        <div class="form-row align-items-center">
+            <div class="col-10">
+                <label class="sr-only block" for="nombre">Name</label>
+                <input type="text" keyup="filtrarNombre(nombre)" class="form-control mb-2" id="nombre" placeholder="Search by name..." name="nombre" ngModel>
+            </div>
+            <div class="col-auto">
+                <button type="submit" class="btn btn-primary mb-2">Search</button>
+            </div>
+        </div>
+    </form>
     <hr>
+
+    <h2>TABLA DE INFORMACIÓN</h2>
+
     <table class="table table-striped border">
         <thead>
             <tr>
@@ -15,7 +29,7 @@
         <tbody>
             <tr *ngFor="let user of filteredUsers">
                 <th> {{user.name}} </th>
-                <td>{{user.Country}}</td>
+                <td>{{user.country}}</td>
                 <td>{{user.position}}</td>
                 <td>{{user.email}}</td>
                 <td>{{user.phoneNumber}}</td>
