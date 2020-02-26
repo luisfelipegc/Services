@@ -30,15 +30,11 @@ import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatSortModule} from '@angular/material/sort';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material';
-import { PrimengComponent } from './components/primeng/primeng.component';
 
 
 // PrimeNG
+import { PrimengComponent } from './components/primeng/primeng.component';
 import {TableModule} from 'primeng/table';
-
-
-
-
 
 @NgModule({
   declarations: [

@@ -3,6 +3,15 @@
     <hr>
     <!--  START TABLE -->
     <p-table #dt [columns]="cols" [value]="listData" [paginator]="true" [rows]="10" [first]="first">
+
+        <!-- START EXPORT AS PFD -->
+        <ng-template pTemplate="caption">
+            <div class="ui-helper-clearfix" style="text-align: left">
+                <button type="button" pButton icon="pi pi-file-pdf" iconPos="left" label="PDF" (click)="exportPdf()" class="ui-button-warning"></button>
+            </div>
+        </ng-template>
+        <!-- END EXPORT AS PFD -->
+
         <!-- ====================== -->
         <!-- START GLOBAL FILTER -->
         <!-- ====================== -->

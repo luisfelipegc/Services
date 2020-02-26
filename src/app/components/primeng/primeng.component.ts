@@ -14,6 +14,9 @@ export class PrimengComponent implements OnInit {
   // Paginator control
   first = 0;
 
+  // Export
+  columns: any[];
+
   // Header array
   cols = [
     { field: 'athlete', header: 'Athlete' },
@@ -24,6 +27,8 @@ export class PrimengComponent implements OnInit {
     { field: 'sport', header: 'Sport' },
     { field: 'total', header: 'Total' },
 ];
+
+exportColumns = this.cols.map(col => ({title: col.header, dataKey: col.field}));
 
   constructor(private servicioService: ServicioService) { }
 
@@ -49,4 +54,15 @@ FilterUtils = (value, filter): boolean => {
   // reset() {
   //   this.first = 0;
   // }
+
+  exportPdf() {
+    import('jspdf').then(jsPDF => {
+        import('jspdf-autotable').then(x => {
+            const doc = new jsPDF.default(0, 0);
+            doc.autoTable(this.columns, this.listData);
+            doc.save('data.pdf');
+        });
+    });
+}
+
 }
