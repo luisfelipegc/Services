@@ -1,0 +1,80 @@
+<div class="container mt-5">
+    <h1>PRIMENG</h1>
+    <hr>
+    <!--  START TABLE -->
+    <p-table #dt [columns]="cols" [value]="listData" [paginator]="true" [rows]="10" [first]="first">
+        <!-- ====================== -->
+        <!-- START GLOBAL FILTER -->
+        <!-- ====================== -->
+        <ng-template pTemplate="caption">
+            <div style="text-align: right">
+                <i class="fa fa-search" style="margin:4px 4px 0 0"></i>
+                <input type="text" pInputText size="50" placeholder="Global Filter" (input)="dt.filterGlobal($event.target.value, 'contains')" style="width:auto">
+            </div>
+        </ng-template>
+        <!-- ====================== -->
+        <!-- END GLOBAL FILTER -->
+        <!-- ====================== -->
+
+
+        <ng-template pTemplate="header" let-columns>
+
+            <!-- ====================== -->
+            <!--  START HEADER -->
+            <!-- ====================== -->
+            <tr>
+                <th *ngFor="let col of columns" [pSortableColumn]="col.field">
+                    {{col.header}}
+                    <p-sortIcon [field]="col.field"></p-sortIcon>
+                </th>
+            </tr>
+            <!-- ====================== -->
+            <!-- END HEADER -->
+            <!-- ====================== -->
+
+
+            <!-- ====================== -->
+            <!-- START FILTERS -->
+            <!-- ====================== -->
+            <tr>
+                <th *ngFor="let col of columns" [ngSwitch]="col.field">
+                    <input style="width: 120px;" placeholder="Athlete..." *ngSwitchCase="'athlete'" pInputText type="text" (input)="dt.filter($event.target.value, col.field, 'contains')">
+                    <input style="width: 120px;" *ngSwitchCase="'age'" pInputText type="text" (input)="dt.filter($event.target.value, col.field, 'contains')">
+                    <input style="width: 120px;" *ngSwitchCase="'country'" pInputText type="text" (input)="dt.filter($event.target.value, col.field, 'contains')">
+                    <input style="width: 120px;" *ngSwitchCase="'year'" pInputText type="text" (input)="dt.filter($event.target.value, col.field, 'contains')">
+                    <input style="width: 120px;" *ngSwitchCase="'date'" pInputText type="text" (input)="dt.filter($event.target.value, col.field, 'contains')">
+                    <input style="width: 120px;" *ngSwitchCase="'sport'" pInputText type="text" (input)="dt.filter($event.target.value, col.field, 'contains')">
+                    <input style="width: 120px;" *ngSwitchCase="'total'" pInputText type="text" (input)="dt.filter($event.target.value, col.field, 'contains')">
+                </th>
+            </tr>
+            <!-- ====================== -->
+            <!-- END FILTERS -->
+            <!-- ====================== -->
+        </ng-template>
+
+        <!-- ====================== -->
+        <!--  START CONTENT -->
+        <!-- ====================== -->
+        <ng-template pTemplate="body" let-rowData let-columns="columns">
+            <tr>
+                <td *ngFor="let col of columns">
+                    {{rowData[col.field]}}
+                </td>
+            </tr>
+        </ng-template>
+        <!-- ====================== -->
+        <!--  END CONTENT -->
+        <!-- ====================== -->
+
+        <!-- REVISAR ICONOS, SE SUPONE QUE ACÁ MUESTRA EN LAS ESQUINAS LA PÁGINA EN LA QUE SE ENCUENTRA PERO NO FUNCIONA -->
+        <!-- <ng-template pTemplate="paginatorleft" let-state>
+            {{state.first}}
+            <button type="button" pButton icon="fa-refresh"></button>
+        </ng-template>
+        <ng-template pTemplate="paginatorright">
+            <button type="button" pButton icon="fa-cloud-upload"></button>
+        </ng-template> -->
+        <!--  END REVISAR ICONOS, SE SUPONE QUE ACÁ MUESTRA EN LAS ESQUINAS LA PÁGINA EN LA QUE SE ENCUENTRA PERO NO FUNCIONA -->
+    </p-table>
+    <!--  END TABLA -->
+</div>

@@ -30,6 +30,13 @@ import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatSortModule} from '@angular/material/sort';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material';
+import { PrimengComponent } from './components/primeng/primeng.component';
+
+
+// PrimeNG
+import {TableModule} from 'primeng/table';
+
+
 
 
 
@@ -43,6 +50,7 @@ import {MatInputModule} from '@angular/material';
     UsuarioComponent,
     SmarttableComponent,
     OlimpicsComponent,
+    PrimengComponent,
   ],
   imports: [
     BrowserModule,
@@ -57,7 +65,8 @@ import {MatInputModule} from '@angular/material';
     MatPaginatorModule,
     MatSortModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    TableModule
   ],
   providers: [
     ServicioService

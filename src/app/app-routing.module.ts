@@ -6,6 +6,7 @@ import { CarroComponent } from './components/carro/carro.component';
 import { UsuarioComponent } from './components/usuario/usuario.component';
 import { SmarttableComponent } from './components/smarttable/smarttable.component';
 import { OlimpicsComponent } from './components/olimpics/olimpics.component';
+import { PrimengComponent } from './components/primeng/primeng.component';
 
 
 
@@ -16,6 +17,7 @@ const routes: Routes = [
   { path: 'usuario', component: UsuarioComponent },
   { path: 'smart', component: SmarttableComponent },
   { path: 'olimpics', component: OlimpicsComponent },
+  { path: 'primeng', component: PrimengComponent },
   { path: '**', pathMatch: 'full', redirectTo: 'cars' },
 ];
 

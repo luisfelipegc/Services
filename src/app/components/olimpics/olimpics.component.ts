@@ -9,6 +9,7 @@ import { MatTableDataSource, MatSort, MatPaginator } from '@angular/material';
 })
 export class OlimpicsComponent implements OnInit {
 
+
   listData: MatTableDataSource<any>;
   displayedColumns: string[] = ['fullname', 'age', 'country', 'year', 'date', 'sport', 'total', 'actions'];
 
@@ -19,31 +20,20 @@ export class OlimpicsComponent implements OnInit {
   ngOnInit() {
     this.servicioService.getOlimpics().subscribe((resp: any) => {
       const list = resp;
-      // const list = [
-      //   {
-      //     athlete: 'Michael Phelps',
-      //     age: 23,
-      //     country: 'United States',
-      //     year: 2008,
-      //     date: '24/08/2008',
-      //     sport: 'Swimming',
-      //     gold: 8,
-      //     silver: 0,
-      //     bronze: 0,
-      //     total: 8
-      //   }
-      // ];
+
+      // Angular Material properties
       this.listData = new MatTableDataSource(list);
-      // console.log(this.listData);
       this.listData.sort = this.sort;
       this.listData.paginator = this.paginator;
     });
   }
 
+  // Print in console the row's object
   onEdit(element) {
     console.log(element);
   }
 
+  // General filter.
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.listData.filter = filterValue.trim().toLowerCase();
