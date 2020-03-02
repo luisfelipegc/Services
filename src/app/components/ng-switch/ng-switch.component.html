@@ -1,0 +1,11 @@
+<div [ngSwitch]="opcion">
+    <div *ngSwitchCase="1">Valor de 1</div>
+    <div *ngSwitchCase="2">Valor de 2</div>
+    <div *ngSwitchCase="3">Valor de 3</div>
+    <div *ngSwitchDefault>Default</div>
+</div>
+
+<button class="btn btn-primary mr-3" (click)="opcion = opcion + 1"> Aumentar </button>
+<button class="btn btn-warning" (click)="opcion = opcion - 1"> Dismiuir </button>
+
+<h3>Variable: <small> {{opcion}} </small></h3>

@@ -7,6 +7,7 @@ import { UsuarioComponent } from './components/usuario/usuario.component';
 import { SmarttableComponent } from './components/smarttable/smarttable.component';
 import { OlimpicsComponent } from './components/olimpics/olimpics.component';
 import { PrimengComponent } from './components/primeng/primeng.component';
+import { StepperComponent } from './components/stepper/stepper.component';
 
 
 
@@ -18,6 +19,7 @@ const routes: Routes = [
   { path: 'smart', component: SmarttableComponent },
   { path: 'olimpics', component: OlimpicsComponent },
   { path: 'primeng', component: PrimengComponent },
+  { path: 'stepper', component: StepperComponent },
   { path: '**', pathMatch: 'full', redirectTo: 'cars' },
 ];
 

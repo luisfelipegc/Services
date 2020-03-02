@@ -1,5 +1,12 @@
 <div class="container mt-5">
-    <h1>Angular Material</h1>
+    Skills
+    <hr>
+    <ul>
+        <li *ngFor="let prueba of pruebas"> {{prueba.skills}} </li>
+    </ul>
+    <br>
+    <br>
+    <h1>Angular Material {{pruebas[0].id}}</h1>
     <hr>
     <div class="fields-container">
         <mat-form-field>
@@ -82,4 +89,5 @@
         </mat-table>
         <mat-paginator [pageSizeOptions]="[5,10,25,100]" [pageSize]="5" showFirstLastButtons></mat-paginator>
     </div>
+
 </div>

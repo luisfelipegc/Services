@@ -4,23 +4,26 @@
     <!--  START TABLE -->
     <p-table #dt [columns]="cols" [value]="listData" [paginator]="true" [rows]="10" [first]="first">
 
-        <!-- START EXPORT AS PFD -->
+        <!-- ====================== -->
+        <!-- START HEADER -->
+        <!-- ====================== -->
         <ng-template pTemplate="caption">
-            <div class="ui-helper-clearfix" style="text-align: left">
-                <button type="button" pButton icon="pi pi-file-pdf" iconPos="left" label="PDF" (click)="exportPdf()" class="ui-button-warning"></button>
-            </div>
+            List of Athletes
         </ng-template>
-        <!-- END EXPORT AS PFD -->
+        <!-- ====================== -->
+        <!-- END HEADER -->
+        <!-- ====================== -->
+
 
         <!-- ====================== -->
         <!-- START GLOBAL FILTER -->
         <!-- ====================== -->
-        <ng-template pTemplate="caption">
-            <div style="text-align: right">
+        <!-- <ng-template pTemplate="caption">
+            <div style="text-align: left;">
                 <i class="fa fa-search" style="margin:4px 4px 0 0"></i>
                 <input type="text" pInputText size="50" placeholder="Global Filter" (input)="dt.filterGlobal($event.target.value, 'contains')" style="width:auto">
             </div>
-        </ng-template>
+        </ng-template> -->
         <!-- ====================== -->
         <!-- END GLOBAL FILTER -->
         <!-- ====================== -->
@@ -47,7 +50,7 @@
             <!-- ====================== -->
             <tr>
                 <th *ngFor="let col of columns" [ngSwitch]="col.field">
-                    <input style="width: 120px;" placeholder="Athlete..." *ngSwitchCase="'athlete'" pInputText type="text" (input)="dt.filter($event.target.value, col.field, 'contains')">
+                    <input style="width: 120px;" *ngSwitchCase="'athlete'" pInputText type="text" (input)="dt.filter($event.target.value, col.field, 'contains')">
                     <input style="width: 120px;" *ngSwitchCase="'age'" pInputText type="text" (input)="dt.filter($event.target.value, col.field, 'contains')">
                     <input style="width: 120px;" *ngSwitchCase="'country'" pInputText type="text" (input)="dt.filter($event.target.value, col.field, 'contains')">
                     <input style="width: 120px;" *ngSwitchCase="'year'" pInputText type="text" (input)="dt.filter($event.target.value, col.field, 'contains')">
@@ -86,4 +89,40 @@
         <!--  END REVISAR ICONOS, SE SUPONE QUE ACÁ MUESTRA EN LAS ESQUINAS LA PÁGINA EN LA QUE SE ENCUENTRA PERO NO FUNCIONA -->
     </p-table>
     <!--  END TABLA -->
+    <br>
+    <h1>Prueba de multifiltros</h1>
+    <hr>
+
+    <p-multiSelect [options]="cities1" [(ngModel)]="selectedCities1"></p-multiSelect>
+    <hr> Haciendo prueba
+    <br>
+    <i class="fab fa-accessible-icon mr-3"></i>
+    <i class="fas fa-address-card"></i>
+    <!-- <p-confirmDialog header="Confirmation" icon="pi pi-exclamation-triangle"></p-confirmDialog>
+
+    <button type="text" (click)="confirm()" pButton icon="pi pi-check" label="Confirm"></button> -->
+    <hr>
+    <h2>STEPS</h2>
+    <!-- <p-toast [style]="{marginTop: '80px'}"></p-toast> -->
+
+    <h3>Clickable</h3>
+    <p-steps [model]="items" [(activeIndex)]="activeIndex" [readonly]="false">
+
+    </p-steps>
+
+
+    <!-- <h2>Prueba de ngStyle</h2>
+    <app-ng-style> </app-ng-style>
+
+    <hr>
+
+    <h2>Prueba de ngClass</h2>
+    <app-ng-class></app-ng-class>
+
+    <hr> -->
+
+    <!-- <h2>Prueba de ngSwitch</h2>
+    <app-ng-switch></app-ng-switch> -->
+
+
 </div>

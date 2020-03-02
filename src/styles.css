@@ -65,3 +65,7 @@ table {
     font-size: 14px;
     width: 100%;
 }
+
+p-table {
+    background-color: lawngreen;
+}

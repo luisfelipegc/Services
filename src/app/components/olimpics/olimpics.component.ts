@@ -9,13 +9,41 @@ import { MatTableDataSource, MatSort, MatPaginator } from '@angular/material';
 })
 export class OlimpicsComponent implements OnInit {
 
+    pruebas = [
+      {
+        id: 1118870522,
+        skills: [{
+          id: 1,
+          name: 'Java',
+          type: 'BE'
+      },
+      {
+          id: 2,
+          name: 'PHP',
+          type: 'BE'
+      },
+      {
+          id: 3,
+          name: 'Python',
+          type: 'BE'
+      },
+      {
+          id: 4,
+          name: 'Angular',
+          type: 'BE'
+      }]}];
 
   listData: MatTableDataSource<any>;
   displayedColumns: string[] = ['fullname', 'age', 'country', 'year', 'date', 'sport', 'total', 'actions'];
 
   @ViewChild(MatSort, {static: false}) sort: MatSort;
   @ViewChild(MatPaginator, {static: false}) paginator: MatPaginator;
-  constructor(private servicioService: ServicioService) { }
+  constructor(private servicioService: ServicioService) {
+    for (const prueba of this.pruebas) {
+      console.log(prueba.skills);
+    }
+    console.log(this.pruebas[0].skills);
+  }
 
   ngOnInit() {
     this.servicioService.getOlimpics().subscribe((resp: any) => {
