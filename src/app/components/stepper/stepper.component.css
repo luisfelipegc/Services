@@ -5,3 +5,8 @@
 .mat-form-field {
     margin-top: 16px;
 }
+
+.feedback {
+    position: absolute;
+    z-index: 100;
+}

@@ -13,7 +13,6 @@ export class CarroComponent implements OnInit {
   codigo: any;
   modeloscarro: any[] = [];
   constructor(private activatedRouter: ActivatedRoute,
-              private servicioService: ServicioService,
               private http: HttpClient) {}
 
   ngOnInit() {

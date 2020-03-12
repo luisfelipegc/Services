@@ -31,6 +31,10 @@ import {StepsModule} from 'primeng/steps';
 import { StepperComponent } from './stepper/stepper.component';
 import {MatStepperModule} from '@angular/material/stepper';
 
+// Dialog
+import {DialogModule} from 'primeng/dialog';
+import { FeedbackComponent } from './feedback/feedback.component';
+
 @NgModule({
 
     declarations: [
@@ -45,7 +49,8 @@ import {MatStepperModule} from '@angular/material/stepper';
     NgStyleComponent,
     NgClassComponent,
     NgSwitchComponent,
-    StepperComponent
+    StepperComponent,
+    FeedbackComponent
     ],
 
     imports: [
@@ -68,11 +73,13 @@ import {MatStepperModule} from '@angular/material/stepper';
         ServicesModule,
         StepsModule,
         MatStepperModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        DialogModule
     ],
 
     exports: [
         LibrosComponent,
+        FormsModule,
         NavbarComponent,
         JobsComponent,
         CarroComponent,

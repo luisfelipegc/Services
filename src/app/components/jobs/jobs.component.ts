@@ -1,42 +1,66 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { ServicioService } from '../../services/servicio.service';
-import { Router } from '@angular/router';
-import { CdkVirtualScrollViewport } from '@angular/cdk/scrolling';
+import { Component, OnInit } from '@angular/core';
+import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-jobs',
   templateUrl: './jobs.component.html',
-  styles: []
+  styles: [`
+  .reset {
+    margin-left: auto;
+}
+`]
 })
 export class JobsComponent implements OnInit {
-  @ViewChild(CdkVirtualScrollViewport, {static: false}) viewport: CdkVirtualScrollViewport;
-  carros: any[] = [];
-  constructor(private servicioService: ServicioService,
-              private router: Router) {}
 
-  ngOnInit() {
-    this.servicioService.getCars().subscribe((resp: any) => {
-      console.log(resp);
-      this.carros = resp;
-    // console.log(this.carros);
-    });
-  }
+  user: any = {
+    email: '',
+    password: ''
+  };
 
-  atras() {
+  forma: FormGroup;
 
-  }
+  constructor(private formbuilder: FormBuilder) {
+    this.createForm();
+   }
 
-  siguiente() {
+   ngOnInit() {
 
-  }
+   }
 
-  final() {
-    this.viewport.scrollToIndex(this.carros.length);
-  }
+   get invalidEmail() {
+      return this.forma.get('email').invalid && this.forma.get('email').touched;
+   }
+
+   get invalidPassword() {
+    return this.forma.get('password').invalid && this.forma.get('password').touched;
+ }
 
 
-  verCarro(codigo: number) {
-    // console.log(codigo);
-    this.router.navigate(['/carro', codigo]);
+   createForm() {
+     this.forma = this.formbuilder.group({
+       email : ['', [Validators.required,
+                     Validators.email,
+                     Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+[.]+[a-z]{2,3}$')
+                    ]
+               ],
+       password: ['', [Validators.required,
+                       Validators.minLength(6),
+                      ]
+                 ]
+
+      });
+    }
+
+  getInfo() {
+    if (this.forma.invalid) {
+      return Object.values(this.forma.controls).forEach( control => {
+        control.markAsTouched();
+      });
+    } else {
+      this.user = {
+        ...this.forma.value
+      };
+      console.log(this.user);
+    }
   }
 }

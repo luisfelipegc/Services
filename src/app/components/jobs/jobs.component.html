@@ -1,34 +1,42 @@
-<div class="row mt-2">
-    <div class="col">
-        <button (click)="atras()" class="btn btn-outline-primary float-left">Atras</button>
-    </div>
-    <div class="col">
-        <button (click)="siguiente()" class="btn btn-outline-secondary float-right">Siguiente</button>
-    </div>
-</div>
+<div class="container mt-5">
+    <blockquote class="blockquote">
+        <p class="mb-0">Login</p>
+    </blockquote>
 
-<cdk-virtual-scroll-viewport itemSize="30" class="list-container mt-1">
-    <table class="table table-striped">
-        <thead>
-            <tr>
-                <th scope="col">#</th>
-                <th scope="col">Nombre</th>
-                <th scope="col">Codigo</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *cdkVirtualFor="let carro of carros; let i = index; let c = count;">
-                <th scope="row">{{i+1}} / {{c}}</th>
-                <td>{{carro.nome | uppercase}}</td>
-                <td>{{carro.codigo}}</td>
-                <td>
-                    <button (click)="verCarro(carro.codigo)" class="btn btn-outline-dark btn-block">Ver
-                        especificaciones</button>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-</cdk-virtual-scroll-viewport>
-<button (click)="final()" class="btn btn-outline-secondary mt-2 btn-block">Ir al final</button>
-<div class="row">
+    <form [formGroup]="forma" (ngSubmit)="getInfo()">
+
+        <!-- Email field -->
+        <!-- <span *ngIf="forma.controls['email'].dirty && forma.controls['email'].errors" class="text-danger">Invalid email</span> -->
+        <div class="form-group row">
+            <label class="col-2 col-form-label">Email</label>
+            <div class="col-md-8">
+                <input class="form-control" type="email" placeholder="Enter your email..." formControlName="email" [class.is-invalid]="invalidEmail">
+                <small *ngIf="invalidEmail" class="text-danger">Invalid email</small>
+            </div>
+        </div>
+
+
+        <!-- Password field -->
+        <!-- <span *ngIf="forma.controls['password'].dirty && forma.controls['password'].errors" class="text-danger">Enter at least 6 characters </span> -->
+        <div class="form-group row">
+            <label class="col-2 col-form-label">Password</label>
+            <div class="col-md-8">
+                <input class="form-control" name="password" type="password" placeholder="Enter your password..." formControlName="password" [class.is-invalid]="invalidPassword">
+                <small *ngIf="invalidPassword" class="text-danger">Invalid password</small>
+            </div>
+        </div>
+
+        <!-- Submit button -->
+        <!-- [disabled]="!forma.valid" -->
+        <div class="form-group row">
+            <label class="col-2 col-form-label">&nbsp;</label>
+            <div class="input-group col-md-8">
+                <button type="submit" [routerLink]="['/jobapply']" class="btn btn-outline-primary mr-3">
+                    Continue
+                </button>
+                <a class="reset mr-4" [routerLink]="['/signup']"> Signup </a>
+                <a [routerLink]="['']"> Reset password</a>
+            </div>
+        </div>
+    </form>
 </div>

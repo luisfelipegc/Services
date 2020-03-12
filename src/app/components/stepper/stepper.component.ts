@@ -8,6 +8,11 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 })
 export class StepperComponent implements OnInit {
 
+  displayBasic: boolean;
+  displayBasic2: boolean;
+
+  // END DIALOGS
+
   isLinear = true;
   firstFormGroup: FormGroup;
   secondFormGroup: FormGroup;
@@ -29,5 +34,14 @@ export class StepperComponent implements OnInit {
 
   getInfo() {
     console.log(this.firstFormGroup.value.firstCtrl);
+  }
+
+  showBasicDialog() {
+      this.displayBasic = true;
+  }
+
+  showBasicDialog2() {
+      this.displayBasic2 = true;
+      this.displayBasic = false;
   }
 }
